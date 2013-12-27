@@ -1,0 +1,256 @@
+/* ----- common ----- */
+
+body {
+	/*overflow:hidden;*/
+	background-color: #fff;
+	color: #333;
+	font-size: 0.8em;
+	line-height:145%;
+	font-family: "ＭＳ Ｐゴシック","ＭＳ ゴシック",sans-serif;
+	margin:0;
+	padding:0;
+}
+
+img {
+	border			: none;
+	vertical-align	: top;
+	margin:0;
+	padding:0;
+
+	
+}
+p {
+	border			: none;
+	vertical-align	: top;
+	margin:0;
+	padding:0;
+
+	
+}
+
+a:link {
+	color: #3b5998;
+	text-decoration: none;
+
+}
+
+#wrap {
+		border:1px solid #cccccc;
+	background-color: #e7ebf2;
+	width: 810px;
+	margin:0px auto;
+	padding:0;
+}
+
+
+
+
+
+
+/* ----- contents ----- */
+
+#contents01{
+
+	width:769px;
+	margin:0px auto;
+	padding:20px 20px 0 20px;
+}
+
+#contents02{
+	width:670px;
+	margin:0px auto;
+	padding:20px 20px 0 20px;
+}
+
+#contents03{
+	width:770px;
+	margin:0px auto;
+	padding:20px 20px 0 20px;
+}
+
+/* ----- main ----- */
+
+
+
+#main{
+	width:769px;
+}
+
+/* ----- category ----- */
+#category{
+	width:670px;
+}
+.categ{
+	padding-bottom:8px;
+}
+.banner{
+	padding:20px 0 30px 0;
+}
+
+/* ----- template ----- */
+
+#template{
+	width:770px;
+	border:2px solid #cdd5e3;
+	background-color: #ffffff;
+	margin:0px auto;
+	padding-bottom:20px;
+	
+}
+
+#temp_left {
+	clear:both;
+	border:1px solid #cccccc;
+	float:left;
+	height: 130px;
+
+	padding:2px;
+	margin:20px 5px 0 22px;
+	width:352px;
+}
+
+#temp_right {
+	border:1px solid #cccccc;
+	float:left;
+
+	height: 130px;
+	padding:2px;
+	margin:20px 22px 0 5px;
+	width:352px;
+}
+
+/* ----- album ----- */
+
+#album{
+	width:767px;
+	border:2px solid #cdd5e3;
+	background-color: #ffffff;
+	margin:10px auto 0 auto;
+	padding-bottom:20px;
+	
+}
+
+#alb_box{
+	margin:10px auto;
+	padding-left:10px;
+	padding-bottom:30px;
+		
+}
+
+#alb_left {
+	float:left;
+	background-image:url(../img/album/app_alb_02.jpg);
+	height: 126px;
+	margin:10px 6px 0 0;
+	width:182px;
+}
+
+.alb_thumb {
+	width:165px;
+	height:110px;
+	padding:10px 0 0 11px;
+}
+
+.alb_name {
+	padding:10px 0 0 11px;
+	line-height:100%;
+	font-size: 0.8em;
+	font-weight:bold;
+}
+
+/* ----- picture ----- */
+
+#picture{
+	width:767px;
+	border:2px solid #cdd5e3;
+	background-color: #ffffff;
+	margin:10px auto 0 auto;
+	padding-bottom:20px;
+	
+}
+
+#pic_box{
+	margin:10px auto;
+	padding-left:10px;
+	padding-bottom:0px;
+		
+}
+
+
+.pic_thumb {
+	float:left;
+	padding-right:2px;
+	width:105px;
+	height:70px;
+}
+
+
+/* ----- thanks ----- */
+
+#thanks {
+	width:597px;
+	margin:0 auto;
+}
+
+
+/* ----- page change ----- */
+.btn-pn{
+	padding:0 11px 0 0;
+	text-align:right;
+
+}
+
+.btn-pn span{
+	border:1px solid #000;
+	padding:3px 10px;
+	margin:0px 10px;
+}
+
+.btn-pn img{margin-top:-2px;}
+
+/* ----- btn ----- */
+#btn{
+	width:424px;
+	margin:30px auto;}
+
+#page_btn{
+	width:590px;
+	margin:0 auto;
+	
+}
+
+#btn_back{
+	float:left;
+	padding:30px 10px 30px 10px;
+}
+#btn_next{
+	float:left;
+	padding:30px 10px 30px 10px;
+}
+
+
+#btn_top{
+	width:345px;
+	margin:30px auto;
+
+}
+
+.btn_check{
+	padding:10px 0 0 0;
+	text-align:right;
+
+}
+
+/* ----- clearfix ----- */
+
+.clearfix:after {
+	content: ".";
+	display: block;
+	clear: both;
+	height: 0;
+	visibility: hidden;
+	font-size: 0.1em;
+	line-height: 0; 
+}
+* html .clearfix             { zoom: 1; } /* IE6 */
+*:first-child+html .clearfix { zoom: 1; } /* IE7 */
