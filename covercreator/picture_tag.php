@@ -75,14 +75,15 @@ $startTime = microtime(true);
 		} 
 	}
 
-
 	if ($fb_user){
 		if(($template_id)){
 			
 			$query_url = 'https://graph.facebook.com/me/photos?&access_token='. $access_token;
 			$tag_photos_query_result = json_decode(file_get_contents($query_url),true);
 			$cnt = 0;
+			$photos_list = array();
 			foreach($tag_photos_query_result["data"] as $data){
+
 				$photos_list[$cnt]["id"] = $data["id"];
 				$photos_list[$cnt]["photos_source"] = $data["source"];
 				$photos_list[$cnt]["photos_url"] = $fb_user."/thumb_".$fb_user."_".$data["id"];
@@ -99,7 +100,9 @@ $startTime = microtime(true);
 			foreach($photos_list as $key => $row){
 				$sort_updated_time[$key] = $row["tag_updated_time"];
 			}
-			array_multisort($sort_updated_time,SORT_DESC,$photos_list);
+			if (count($photos_list)>0){
+				array_multisort($sort_updated_time,SORT_DESC,$photos_list);
+			}
 		}
 
 		//ページング
@@ -113,6 +116,9 @@ $startTime = microtime(true);
 
 		if($action_flg=="photos_select"){
 				if($photo_place == 1){
+
+					print("photo_source: " . $photo_source);
+					
 					//ファイル名の接尾語を設定：ブラウザキャッシュへの対応
 					$cover_file_suffix = "ver_".date("mdHis");
 
@@ -124,7 +130,7 @@ $startTime = microtime(true);
 					$height_new = ((770*$size_photo_source[1])/$size_photo_source[0]);
 					$screen_new = imagecreatetruecolor(770,$height_new);
 					$ret = imagecopyresampled($screen_new, $screen, 0, 0, 0, 0, 770,$height_new, $size_photo_source[0],$size_photo_source[1]);
-					$ret = imagejpeg($screen_new,$LOG_PICTURE."tags/".$fb_user."/display_photo_".$fb_user."_".$photos_id."_".$photo_place.".jpeg");
+					$ret = imagejpeg($screen_new, $LOG_PICTURE."tags/".$fb_user."/display_photo_".$fb_user."_".$photos_id."_".$photo_place.".jpeg");
 					imagedestroy($screen);
 					imagedestroy($screen_new);
 
@@ -576,7 +582,10 @@ window.fbAsyncInit = function() {
 			$data_display = "none";
 		}
 	?>
-<p class="pic_thumb" id="cover_photo_<?php echo($page_no);?>_<?php echo($data_no);?>" style="display:<?php echo($data_display);?>;"><img src="<?php echo($LOG_PICTURE);?>tags/<?php echo($data["photos_url"]);?>.jpeg" width="105" height="70" onClick="javascript:doPhotosSelect('picture_tag','photos_select','<?php echo($template_id);?>','<?php echo($data["id"]);?>','<?php echo($photo_place);?>','<?php echo($LOG_PICTURE);?>tags/<?php echo($data["photos_url"]);?>.jpeg','<?php echo($page_id);?>')" style="cursor:pointer;"></p>
+<p class="pic_thumb" id="cover_photo_<?php echo($page_no);?>_<?php echo($data_no);?>" style="display:<?php echo($data_display);?>;">
+	<img src="<?php echo($data["photos_source"]);?>" width="105" height="70" onClick="javascript:doPhotosSelect('picture_tag','photos_select','<?php echo($template_id);?>','<?php echo($data["id"]);?>','<?php echo($photo_place);?>','<?php echo($data["photos_source"]);?>','<?php echo($page_id);?>')" style="cursor:pointer;">
+	<!-- <img src="<?php echo($LOG_PICTURE);?>tags/<?php echo($data["photos_url"]);?>.jpeg" width="105" height="70" onClick="javascript:doPhotosSelect('picture_tag','photos_select','<?php echo($template_id);?>','<?php echo($data["id"]);?>','<?php echo($photo_place);?>','<?php echo($LOG_PICTURE);?>tags/<?php echo($data["photos_url"]);?>.jpeg','<?php echo($page_id);?>')" style="cursor:pointer;"> -->
+</p>
 <?php 	
 		$data_no ++;
 		if($data_no > $_limit){

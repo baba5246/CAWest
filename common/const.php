@@ -16,7 +16,7 @@
 //--------------------------------------------------------------
 
 	/** ログ出力先メインディレクトリ */
-	define("LOG_DIR_NAME", "/var/www/lib/logs/");
+	define("LOG_DIR_NAME", "/home/sites/heteml/users179/s/e/m/seminar-west/logs/");
 	
 	/** 実行ログ名 */
 	define("ACTION_LOG_NAME", "action");

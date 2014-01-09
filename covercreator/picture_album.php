@@ -82,8 +82,11 @@ $startTime = microtime(true);
 
 	if ($fb_user){
 		if(($template_id)){
+
 			$query_url = 'https://graph.facebook.com/fql?q=SELECT+aid,object_id,cover_pid,cover_object_id,name,size,modified+FROM+album+WHERE+owner+=+me()&access_token='. $access_token;
+			print("query_url: " . $query_url . "\n");
 			$query_result = json_decode(file_get_contents($query_url),true);
+			$album_list = array();
 			$cnt = 0;
 
 			$COVER_CREATOR_NAME = "カバークリエイター Photos";
@@ -109,10 +112,12 @@ $startTime = microtime(true);
 			$cnt ++;
 			}
 
+			print("query_result: " . $query_result . "\n");
+			print("album_list: " . $album_list . "\n");
 			foreach($album_list as $key => $row){
 				$sort_modified[$key] = $row["modified"];
 			}
-			array_multisort($sort_modified,SORT_DESC,$album_list);
+			if (count($album_list)>0) array_multisort($sort_modified,SORT_DESC,$album_list);
 
 		}
 

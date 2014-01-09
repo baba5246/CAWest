@@ -33,8 +33,9 @@
 		$dir_name = LOG_DIR_NAME . $domain . $log_name . "/" . date("Ym");
 		//$dir_name = LOG_DIR_NAME . $log_name . "/" . date("Ym");
 		if (!is_dir($dir_name)) {
+			// exit($dir_name);
 			if (!mkdir($dir_name)) {
-				//print ("ログディレクトリ作成エラーです。");
+				print ("Error in making a log directory:" . $dir_name);
 				return false;
 			}
 			chmod($dir_name, 0755);
@@ -60,6 +61,27 @@
 		//ログ出力を終了する
 		flock($logFile, LOCK_UN);
 		fclose($logFile);
+	}
+	
+//--------------------------------------------------------------
+// 
+//--------------------------------------------------------------
+	function printArray($array) {
+
+		if (is_array($array)) {
+			print("array { \n");
+			foreach ($array as $key => $value) {
+				print($key . " : ");
+				if (is_array($value)) {
+					printArray($value);
+				} else {
+					print($value . "\n");
+				}
+			}
+			print("} \n");
+		} else {
+			print("$array is not array type.\n");
+		}
 	}
 
 

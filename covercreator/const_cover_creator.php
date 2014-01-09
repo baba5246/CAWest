@@ -4,7 +4,7 @@
 	$SECRET_COVER = "4e0c8c1474160ee28b798e19d37606fb";
 	$SCOPE_COVER = "email,read_friendlists,photo_upload,status_update,publish_stream,publish_actions,user_photos,friends_photos,user_birthday";
 
-	$LOG_COVER = "cover_creator/";
+	$LOG_COVER = "covercreator/";
 	$LOG_PICTURE = "./picture/tmp/";
 
 	$MY365_API_URL = "https://my365.in/private-api/facebook-user-photo";
